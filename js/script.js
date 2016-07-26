@@ -40,6 +40,8 @@ $(document).ready(function(){
 
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
+
+		
 	});
 
 
@@ -99,7 +101,6 @@ $(document).ready(function(){
 });
 
 function checkWin(){
-	//alert("Game Over");
 	//Get player total
 	var playersTotal = calculateTotal(playersHand, 'player');
 	//Get dealer total
@@ -127,17 +128,21 @@ function checkWin(){
 		}
 		else{
 			//Push. (tie) Say this somewhere
-			alert("We have a tie!!");
+			alert("PUSH!!" / "We have a tie!!");
 		}
 	}
+	alert("Game Over");
 }
+
 
 function placeCard(who, where, cardToPlace){
 	var classSelector = '.' + who + '-cards .card-' + where;
 
 	//write logic to fix the 11, 12, 13th card issue
 
-	$(classSelector).html(cardToPlace);
+	// $(classSelector).html(cardToPlace);
+	$(classSelector).css({"background-Image": "url(images/PNG-cards-1.3/" + cardToPlace + ".png",
+	 "background-size": "cover", "transition": "all 1s ease-in", "transform": "rotate(1080deg)"});
 }
 
 
