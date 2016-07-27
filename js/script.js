@@ -1,13 +1,13 @@
-// Set messages after game over
+// *Set messages after game over
 // The table/game looks like Rob made it. Change this.
-// What about those stupid 11, 12, 13?
-// What about Aces?
+// *What about those stupid 11, 12, 13?
+// What about Aces equal 1 and 11?
 // The player can hit forever?
 // There is no win counter/bet system
 // There is no "deck" to draw from
-// The cards aren't red or black like they should/could be
-// The cards are lame. Find images.
-// There is no delay on showing the cards... it's instant. 
+// *The cards aren't red or black like they should/could be
+// *The cards are lame. Find images.
+// *There is no delay on showing the cards... it's instant. 
 // You can see the dealers 2nd card on deal. That's unfair (to the house).
 
 
@@ -40,8 +40,6 @@ $(document).ready(function(){
 
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
-
-		
 	});
 
 
@@ -111,28 +109,33 @@ function checkWin(){
 		//player had busted
 		//Set a message somewhere that says this
 		alert("Player BUST!!!");
+		//$( ".alert" ).append( "<strong>Hello</strong>" );
 	} 
 	else if(dealersTotal > 21){
 		//dealer had busted
 		//Set a message somewhere that says this
 		alert("Dealer BUST!");
+		//$( ".alert" ).append( "<strong>Dealer BUST!</strong>" );
 	}
 	else{ //neither player has more than 21
 		if(playersTotal > dealersTotal){
 			//Player won. Say this somewhere
 			alert("The player has Won!!!");
+			//$( ".alert" ).append( "<strong>The player has Won!!!</strong>" );
 		}
 		else if(dealersTotal > playersTotal){
-			//Dealer won. Say this somewhere
+			//Dealer won. Say this somewher
 			alert("The dealer Won!");
 		}
 		else{
 			//Push. (tie) Say this somewhere
-			alert("PUSH!!" / "We have a tie!!");
+			alert("PUSH!! We have a tie!!");
 		}
 	}
-	alert("Game Over");
+	if(alert('Game Overr!')){}
+	else    window.location.reload(); 
 }
+	
 
 
 function placeCard(who, where, cardToPlace){

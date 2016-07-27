@@ -8,7 +8,7 @@
 
 .card{
 	height: 175px;
-	//background-color: #fff;
+	/* background-color: #fff; */
 	background-image: url("../images/card-back.jpg");
 	background-size: cover;
 	color: black;
@@ -17,9 +17,6 @@
 	/* transform: rotate(1000deg); */
 }
 
-.dealer-cards, .player-cards{
-	transition: all 5s cubic-bezier(1.000, -0.530, 0.405, 0.1425);
-}
 
 .dealer-hand-wrapper, .player-hand-wrapper{
 	color: white;
