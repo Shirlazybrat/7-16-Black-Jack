@@ -10,6 +10,8 @@
 // *There is no delay on showing the cards... it's instant. 
 // You can see the dealers 2nd card on deal. That's unfair (to the house).
 
+//***Create a wagering system**
+
 
 // 1.When the user clicks deal, deal.
 
@@ -151,7 +153,7 @@ function checkWin(){
 		}
 	}
 	if(alert('Game Overr!')){}
-	else    window.location.reload(); 
+	else window.location.reload(); 
 }
 	
 

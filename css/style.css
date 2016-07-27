@@ -35,3 +35,8 @@
 	color: white;
 	border-radius: 5px;
 }
+
+.reset button{
+	background-color: blue;
+	color: white;
+}
