@@ -27,24 +27,41 @@ $(document).ready(function(){
 		
 		//push onto the player's hand array, the new card. Then push into the DOM
 		playersHand.push(theDeck[0]);
-		placeCard('player', 'one', theDeck[0])
+		setTimeout(function(){ 
+			placeCard('player', 'one', theDeck[0])
+			}, 500);
+		
 
 		dealersHand.push(theDeck[1]);
-		placeCard('dealer', 'one', theDeck[1])
+		setTimeout(function(){ 
+			placeCard('dealer', 'one', theDeck[1])
+			}, 1000);
+		
 
 		playersHand.push(theDeck[2]);
-		placeCard('player', 'two', theDeck[2])
+		setTimeout(function(){ 
+			placeCard('player', 'two', theDeck[2])
+			}, 1500);
+		
 
 		dealersHand.push(theDeck[3]);
-		placeCard('dealer', 'two', theDeck[3])
-
-		calculateTotal(playersHand, 'player');
-		calculateTotal(dealersHand, 'dealer');
+		setTimeout(function(){ 
+			placeCard('dealer', 'two', theDeck[3])
+			}, 2000);
+		
+		setTimeout(function(){ 
+			calculateTotal(playersHand, 'player');
+			calculateTotal(dealersHand, 'dealer'); 
+			}, 3000);
+		
 	});
 
 
 	$('.hit-button').click(function(){
 		//placeCard('player', 'three', theDeck[4])
+		var playerTotal = calculateTotal(playersHand, 'player');
+
+		if(playerTotal <= 21){
 		var slotForNewCard = '';
 		if(playersHand.length == 2){
 			slotForNewCard = "three";
@@ -62,6 +79,7 @@ $(document).ready(function(){
 			playersHand.push(theDeck[topOfTheDeck]);
 			calculateTotal(playersHand, 'player');
 			topOfTheDeck++;
+		}
 	});
 
 
@@ -184,13 +202,23 @@ for(var i=1; i< 1000; i++){
 function calculateTotal(hand, whosTurn){
 	var cardValue = 0;
 	var total = 0;
+	var hasAce = false; // init ace as false
 	for(var i = 0; i<hand.length; i++){
-	cardValue = Number(hand[i].slice(0,-1))
+	cardValue = Number(hand[i].slice(0,-1));
+		if((cardValue == 1) && ((total + 11) <= 21)){
+			//This card is an ace, chech if eleven will fit. it not = 1
+			cardValue = 11;
+			hasAce = true;
+		}
 	// console.log(hand[i]);
 	// console.log(cardValue);
-	if(cardValue > 10){
+		else if(cardValue > 10){
 		cardValue = 10;
-	}
+		}
+		else if((cardValue + total > 21) && (hasAce)){
+			total = total - 10;
+			hasAce =false;
+		}
 
 	total += cardValue;
 	}
