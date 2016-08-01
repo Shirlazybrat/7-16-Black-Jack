@@ -40,3 +40,18 @@
 	background-color: blue;
 	color: white;
 }
+
+img.chips{
+	width: 200px;
+	position: relative; 
+	margin: 20px;
+}
+
+.betting{
+	text-align: center;
+}
+
+.bank-display{
+	border: 1px dotted red;
+	font-size: 50px;
+}

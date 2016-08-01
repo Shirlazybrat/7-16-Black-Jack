@@ -19,8 +19,15 @@ var theDeck = [];
 var playersHand = [];
 var dealersHand = [];
 var topOfTheDeck = 4;
+var playerBank = 10;
+var betAmount = 0;
+var cardsDealt = false;
 
 $(document).ready(function(){
+
+	$('.chips').click(function(){
+		placeBet();
+	});
 
 	$('.deal-button').click(function(){
 		createDeck(); //Run a function that creates an array of 1H-13D
@@ -116,7 +123,29 @@ $(document).ready(function(){
 		checkWin();
 	});
 
+	$('.reset').click(function(){
+		 playersHand = []; // empty the players hand
+        dealersHand = []; // empty the dealers hand
+        theDeck = []; // empty the deck
+        topOfTheDeck = 4; // reset top of deck to 5
+        cardsDealt = false;
+        $('.row-winner').text(''); // reset win/loss/push message to an empty string
+        $('.card').text(''); // reset cards to blank
+        $('.player-total-number').text('0'); // reset number in player total html
+        $('.dealer-total-number').text('0'); // reset number in dealer total html
+        $('.hit-button').prop('disabled', false);
+		$('.stand-button').prop('disabled', false);
+	});
+
 });
+
+function placeBet(){
+	if((cardsDealt == false) && (playerBank > 0)){
+			betAmount += 1;
+			playerBank -= 1;
+			$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: '+ betAmount);
+	}
+}
 
 function checkWin(){
 	//Get player total
@@ -130,30 +159,48 @@ function checkWin(){
 		//Set a message somewhere that says this
 		alert("Player BUST!!!");
 		//$( ".alert" ).append( "<strong>Hello</strong>" );
+		$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: 0');
 	} 
+	else if(playersTotal == 21){
+		alert('BLACKJACK!');
+		playerBank += (((betAmount * 2)*2)-betAmount);
+		$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: 0');
+	}
 	else if(dealersTotal > 21){
 		//dealer had busted
 		//Set a message somewhere that says this
 		alert("Dealer BUST!");
 		//$( ".alert" ).append( "<strong>Dealer BUST!</strong>" );
+		playerBank += (betAmount * 2);
+		console.log(playerBank);
+		$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: 0');
 	}
 	else{ //neither player has more than 21
 		if(playersTotal > dealersTotal){
 			//Player won. Say this somewhere
 			alert("The player has Won!!!");
 			//$( ".alert" ).append( "<strong>The player has Won!!!</strong>" );
-		}
+			playerBank += (betAmount * 2);
+			$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: 0');
+			}
+
 		else if(dealersTotal > playersTotal){
 			//Dealer won. Say this somewher
 			alert("The dealer Won!");
+			$('.bank-display').html('Bank: ' +playerBank + '<br>Bet: 0');
 		}
 		else{
 			//Push. (tie) Say this somewhere
 			alert("PUSH!! We have a tie!!");
+			$('.bank-display').html('Bank: ' + (playerBank + betAmount) + '<br>Bet: 0');
 		}
+	$('.hit-button').prop('disabled', true);
+	$('.stand-button').prop('disabled', true);
+	$('.deal-button').prop('disabled', true);
 	}
+	betAmount = 0;
 	if(alert('Game Overr!')){}
-	else window.location.reload(); 
+	// else window.location.reload(); 
 }
 	
 
