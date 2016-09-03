@@ -1,7 +1,5 @@
 #Black Jack Game using jQuery/Javascript, HTML, and CSS.
 
-##The Javascript has three primary buttond: Deal, Hit and Stand.
-
 <!-- ![Alt text](img/revelry4.png "Revelry Logo") -->
 
 
@@ -17,7 +15,8 @@ Visit here to play: [Black Jack](http://shirletterly.com/blackjack/)
 	- Bootstrap
 
 ##Sample Code
-###The following code was created to allow the player to place a bet before beginning the game. This calculation function will return the values of the players score depending on the win status and the score updates with each iteration of the game.
+###The following code was created to allow the player to place a bet before beginning the game. This calculation function will return the values of the players score depending on the win status and the score updates with each iteration of the game. The Javascript has three primary buttond: Deal, Hit and Stand.
+
 ```javascript
 function calculateTotal(hand, whosTurn){
 	var cardValue = 0;
