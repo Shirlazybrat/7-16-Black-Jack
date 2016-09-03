@@ -52,7 +52,7 @@ function calculateTotal(hand, whosTurn){
 
 
 ####Early stages of game
-![Alt text](imgages/screenshot.png "Early stages of game")
+![Alt text](images/screenshot.png "Early stages of game")
 
 ##Future Add-ons
 - The ability for two players to play against each other.
